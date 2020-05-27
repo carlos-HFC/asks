@@ -1,0 +1,22 @@
+<%- include('./layout/header'); %>
+<section class="container-fluid mt-3">
+   <div class="p-3 container">
+      <div class="py-3">
+         <h1>Perguntas enviadas</h1>
+         <a href="/ask" class="btn btn-primary mt-2">Perguntar</a>
+      </div>
+   </div>
+</section>
+<section class="container-fluid mt-3">
+   <div class="p-3 container">
+      <% ask.map(res => { %>
+      <div class="pb-3">
+         <hr>
+         <h4><%= res.title %></h4>
+         <!-- <p><%= res.description %></p> -->
+         <a href="/ask/<%= res.id %>" class="btn btn-primary">Responder</a>
+      </div>
+      <% }) %>
+   </div>
+</section>
+<%- include('./layout/footer'); %>

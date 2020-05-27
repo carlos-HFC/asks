@@ -1,0 +1,36 @@
+<%- include('./layout/header'); %>
+<section class="container-fluid mt-3">
+   <div class="jumbotron container">
+      <h1><%= ask.title %></h1>
+      <p class="lead"><%= ask.description %></p>
+      <hr class="my-4">
+      <div class="d-flex justify-content-end mt-3">
+         <button type="submit" class="btn btn-primary mr-2">Responder</button>
+         <a href="/" class="btn btn-secondary">Voltar</a>
+      </div>
+   </div>
+</section>
+<section class="container-fluid">
+   <div class="container p-4">
+      <h2>Responda</h2>
+      <form action="/answer" class="form-group" method="POST">
+         <label>Digite sua resposta</label>
+         <textarea name="body" class="form-control"></textarea>
+         <input type="hidden" name="askId" value="<%= ask.id %>">
+         <div class="d-flex justify-content-end mt-2">
+            <button class="btn btn-primary mr-2">Responder</button>
+            <a href="/" class="btn btn-secondary">Cancelar</a>
+         </div>
+      </form>
+      <hr>
+      <h3>Respostas</h3>
+      <% answer.map(ans => { %>
+      <div class="card">
+         <div class="card-body">
+            <p><%= ans.body %></p>
+         </div>
+      </div>
+      <% }) %>
+   </div>
+</section>
+<%- include('./layout/footer'); %>
